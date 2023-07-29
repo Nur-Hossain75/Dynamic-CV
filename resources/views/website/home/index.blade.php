@@ -3,8 +3,23 @@
 @section('title','Nur Hossain')
 
 @section('content')
+<!--Demo Part-->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <div class="demo_part">
+                    <p>
+                        This is a demo CV, If you want to make one just like this then please Sign In or Sign Up and enter your information.<i class="fa-solid fa-arrow-up   fa-2x fa-rotate-360 fa-flip"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Demo Part-->
     <!--Profile part starr-->
-    <section class="mt-5">
+    <section class="mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-12  mx-auto">
@@ -449,7 +464,6 @@
             </div>
         </div>
     </section>
-    @else
-    <h1>Nai</h1>
+
     <!--Reference part end-->
 @endsection

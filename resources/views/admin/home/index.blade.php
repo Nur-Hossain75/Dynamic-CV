@@ -9,12 +9,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12  mx-auto">
-				<h2 class="text-center"><strong>CURRICULUM VITAE OF</strong></h2>
+				<div class="heading"><h3 class="text-center">CURRICULUM VITAE OF</h3></div>
 				<div class="content_part">
 					<div class="card  border-primary info">
-						<div class="card-header border-primary">
-						<b>{{$profile->name}}</b>
-						</div>
+						<div class="card-header border-primary card_title">{{$profile->name}}</div>
 						<ul class="list-group list-group-flush">
 							@foreach ($contacts as $contact)
 							<li class="list-group-item">

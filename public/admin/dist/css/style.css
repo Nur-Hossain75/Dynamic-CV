@@ -30,6 +30,30 @@ ul {
 /* Menu part end */
 
 /* Profile part start */
+.heading{
+    text-align: center;
+    padding-bottom: -5px;
+}
+.heading h3{
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #353535;
+    position: relative;
+}
+.heading h3::before{
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 60px;
+    content: '';
+    font-family: 'Oswald', sans-serif;
+    background: url(../images/heading_shape.png);
+}
+.card_title{
+    font-weight: 700;
+    border-bottom: 1px solid #5bc5f4 !important;
+}
 .content_part{
     width: 70%;
     float: left;
@@ -37,6 +61,7 @@ ul {
 }
 .info{
     width: 100%;
+    border: 1px solid #5bc5f4 !important;
 }
 .info_first{
     float: left;
@@ -64,7 +89,7 @@ ul {
 }
 .img_part img:hover{
     transform: scale(1.1);
-    border: 1px solid black;
+    border: 1px solid #5bc5f4 !important;
 }
 /* Profile part end */
 
@@ -220,7 +245,7 @@ ul {
 
 /* 2nd footer start */
 .copy_right_color{
-    background: #555555;
+    background: #ebe1e1 !important;
 }
 .copy_right_cont p{
     margin-top: 15px;

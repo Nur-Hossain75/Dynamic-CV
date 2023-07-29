@@ -82,7 +82,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer text-center">
+        <footer class="footer text-center copy_right_color">
             © {{date('Y-m-d')}} Design & Developed by
             <a href="#" class="text-info">{{$profile->name}}</a>
         </footer>

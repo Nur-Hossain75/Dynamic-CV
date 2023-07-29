@@ -25,7 +25,29 @@ ul {
     float: right;
 }
 /* Menu part end */
-
+/* demo part start */
+.demo_part {
+    margin-top: 5px;
+    height: 50px;
+    width: auto;
+    background-color: #c2e3f1;
+    padding: 10px;
+    transition: 0.4s;
+}
+.demo_part:hover{
+    height: 55px;
+    background-color: #5bc5f4;
+    width: 1150px;
+}
+.demo_part p{
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+.demo_part p i{
+    font-size: 25px;
+}
+/* demo part ent*/
 /* Profile part start */
 .content_part{
     width: 70%;
@@ -61,7 +83,7 @@ ul {
 }
 .img_part img:hover{
     transform: scale(1.1);
-    border: 1px solid black;
+    border: 1px solid #5bc5f4;
 }
 /* Profile part end */
 
