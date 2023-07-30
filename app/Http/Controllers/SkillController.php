@@ -31,16 +31,20 @@ class SkillController extends Controller
 
     public function manage()
     {
-        $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
         // $categories = SkillCategory::where('profile_id', $profile_id)->get();
         // $skill = [];
         // foreach($categories as $category){
         //     $skill[] = Skill::where('category_id', $category->id)->get();
         // }
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
+       if($profile){
+        $profile_id = $profile->id;
         $skills = Skill::join('skill_categories', 'skill_categories.id', '=', 'skills.category_id')->select('skills.*', 'skill_categories.category_name')->where('skill_categories.profile_id', $profile_id)->get();
-        // dd($category);
         return view('admin.skills.manage',['skills'=>$skills]);
+       }else
+       {
+        return view('admin.skills.manage');
+       }
     }
 
     public function edit($id)

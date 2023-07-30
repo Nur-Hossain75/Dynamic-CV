@@ -41,13 +41,6 @@ class DashboardController extends Controller
        }else{
             return view('admin.home.index',[
             'profile' => $profile,
-            'contacts' => "",
-            'skill_categories' => "",
-            'certificates' => "",
-            'projects' => "",
-            'educations' => "",
-            'informations' => "",
-            'references' => "",
             ]);
        }
     }

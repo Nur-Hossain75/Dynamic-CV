@@ -20,7 +20,7 @@
                         <div class="form-group row">
                             <label for="exampleInputuname3" class="col-sm-3 control-label">Skill Category</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="category_id" id="">
+                                <select class="form-control" name="category_id" id="" required>
                                     <option value="" disabled selected>--Select Skill Category--</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" >{{ $category->category_name }}</option>

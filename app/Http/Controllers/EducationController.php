@@ -19,27 +19,39 @@ class EducationController extends Controller
         $this->education = new Education();
 
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
+       if($profile)
+       {
+            $profile_id = $profile->id;
 
-        $this->education->profile_id = $profile->id;
-        $this->education->name = $request->name;
-        $this->education->i_name = $request->i_name;
-        $this->education->p_year = $request->p_year;
-        $this->education->cgpa = $request->cgpa;
-        $this->education->group = $request->group;
-        $this->education->board = $request->board;
-        $this->education->pritory = $request->pritory;
-        $this->education->save();
+            $this->education->profile_id = $profile->id;
+            $this->education->name = $request->name;
+            $this->education->i_name = $request->i_name;
+            $this->education->p_year = $request->p_year;
+            $this->education->cgpa = $request->cgpa;
+            $this->education->group = $request->group;
+            $this->education->board = $request->board;
+            $this->education->pritory = $request->pritory;
+            $this->education->save();
 
-        return back()->with('message', 'Informtion Update Successfully.');
+            return back()->with('message', 'Informtion Update Successfully.');
+       }else
+       {
+            return back()->with('message', 'You do not create profilr yet.');
+       }
     }
 
     public function manage()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
-        $this->education = Education::where('profile_id', $profile_id)->get();
-        return view('admin.education.manage',['educationes'=>$this->education ]);
+        if($profile)
+        {
+            $profile_id = $profile->id;
+            $this->education = Education::where('profile_id', $profile_id)->get();
+            return view('admin.education.manage',['educationes'=>$this->education ]);
+        }else
+        {
+            return view('admin.education.manage');
+        }
     }
 
     public function edit($id)

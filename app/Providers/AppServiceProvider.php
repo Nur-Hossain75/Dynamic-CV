@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Profile;
 use Illuminate\Support\ServiceProvider;
+use View;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        
+        View::composer('admin.include.header', function ($view) {
+            $view->with('profile',  Profile::where('user_id', Auth::user()->id)->first());
+        });
     }
 }

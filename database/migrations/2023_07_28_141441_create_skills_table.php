@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
             
-            $table->foreign('category_id')->references('id')->on('skill_categories');
+            $table->foreign('category_id')->references('id')->on('skill_categories')->onDelete('cascade');
         });
     }
 

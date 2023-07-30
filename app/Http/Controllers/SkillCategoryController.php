@@ -19,24 +19,35 @@ class SkillCategoryController extends Controller
         $this->skill_category = new SkillCategory();
 
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
+       if($profile)
+       {
+            $profile_id = $profile->id;
 
-        $this->skill_category->profile_id = $profile->id;
-        $this->skill_category->category_name = $request->category_name;
-        $this->skill_category->pritory = $request->pritory;
-        $this->skill_category->status = $request->status;
-        $this->skill_category->save();
+            $this->skill_category->profile_id = $profile->id;
+            $this->skill_category->category_name = $request->category_name;
+            $this->skill_category->pritory = $request->pritory;
+            $this->skill_category->status = $request->status;
+            $this->skill_category->save();
 
-        return back()->with('message', 'Informtion Update Successfully.');
+            return back()->with('message', 'Informtion Update Successfully.');
+       }else
+       {
+            return back()->with('message', 'You do not create profilr yet.');
+       }
     }
     
 
     public function manage()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
+       if($profile){
         $profile_id = $profile->id;
         $this->skill_category = SkillCategory::where('profile_id', $profile_id)->orderBy('created_at','desc')->get();
         return view('admin.skillCategory.manage',['skill_categorise'=>$this->skill_category]);
+       }else
+       {
+        return view('admin.skillCategory.manage');
+       }
     }
 
     public function edit($id)

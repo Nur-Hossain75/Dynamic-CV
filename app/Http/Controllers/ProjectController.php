@@ -19,27 +19,39 @@ class ProjectController extends Controller
         $this->project = new Project();
 
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
+        if($profile)
+        {
+            $profile_id = $profile->id;
 
-        $this->project->profile_id = $profile->id;
-        $this->project->project_type = $request->project_type;
-        $this->project->title = $request->title;
-        $this->project->description = $request->description;       
-        $this->project->tool_technology = $request->tool_technology;        
-        $this->project->project_link = $request->project_link;
-        $this->project->pritory = $request->pritory;
-        $this->project->status = $request->status;
-        $this->project->save();
+            $this->project->profile_id = $profile->id;
+            $this->project->project_type = $request->project_type;
+            $this->project->title = $request->title;
+            $this->project->description = $request->description;       
+            $this->project->tool_technology = $request->tool_technology;        
+            $this->project->project_link = $request->project_link;
+            $this->project->pritory = $request->pritory;
+            $this->project->status = $request->status;
+            $this->project->save();
 
-        return back()->with('message', 'Informtion Added Successfully.');
+            return back()->with('message', 'Informtion Added Successfully.');
+        }else
+        {
+            return back()->with('message', 'You do not create profile yet.');
+        }
     }
 
     public function manage()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
-        $projects = Project::where('profile_id', $profile_id)->orderBy('created_at','desc')->get();
-        return view('admin.project.manage',['projects'=>$projects]);
+        if($profile)
+        {
+            $profile_id = $profile->id;
+            $projects = Project::where('profile_id', $profile_id)->orderBy('created_at','desc')->get();
+            return view('admin.project.manage',['projects'=>$projects]);
+        }else
+        {
+            return view('admin.project.manage');
+        }
     }
 
     public function edit($id)

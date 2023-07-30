@@ -3,6 +3,7 @@
 @section('title','Manage-Education')
 
 @section('body')
+@if(!empty($profile))
     <div class="row mt-3">
         <div class="col-12">
             <div class="card">
@@ -52,5 +53,8 @@
             </div>
         </div>
     </div>
+@else
+    <h1 class="text-center p-5 bg-warning mt-5">You haven't created any profile yet!!!</h1>
+@endif
 @endsection
 

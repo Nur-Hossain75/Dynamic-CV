@@ -68,7 +68,16 @@
                 <!-- User Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown u-pro">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img  src="{{asset('/')}}{{$profile->image}}" alt="user" class=""> <span class="hidden-md-down">{{$profile->name}} &nbsp;<i class="ti-angle-down"></i></span> </a>
+                    
+                        @if ($profile)
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img  src="{{asset('/')}}{{$profile->image}}" alt="user" class=""> <span class="hidden-md-down">{{$profile->name}} &nbsp;<i class="ti-angle-down"></i></span> 
+                        </a>
+                        @else
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img  src="{{asset('/')}}frontend-assets/assets/images/Rakib.jpg" alt="user" class=""> <span class="hidden-md-down">Your Name &nbsp;<i class="ti-angle-down"></i></span> 
+                        </a>
+                        @endif
                     <div class="dropdown-menu dropdown-menu-end animated flipInY">
                         <!-- text-->
                         <div class="dropdown-divider"></div>

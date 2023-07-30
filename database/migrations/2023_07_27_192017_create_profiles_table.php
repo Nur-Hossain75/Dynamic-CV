@@ -29,7 +29,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

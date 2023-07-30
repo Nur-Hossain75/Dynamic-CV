@@ -19,24 +19,36 @@ class CertificateController extends Controller
         $this->certificate = new Certificate();
 
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
+       if($profile)
+       {
+            $profile_id = $profile->id;
 
-        $this->certificate->profile_id = $profile->id;
-        $this->certificate->name = $request->name;
-        $this->certificate->description = $request->description;
-        $this->certificate->pritory = $request->pritory;
-        $this->certificate->status = $request->status;
-        $this->certificate->save();
+            $this->certificate->profile_id = $profile->id;
+            $this->certificate->name = $request->name;
+            $this->certificate->description = $request->description;
+            $this->certificate->pritory = $request->pritory;
+            $this->certificate->status = $request->status;
+            $this->certificate->save();
 
-        return back()->with('message', 'Informtion Update Successfully.');
+            return back()->with('message', 'Informtion Update Successfully.');
+       }else
+       {
+            return back()->with('message', 'You do not create profile yet.');
+       }
     }
 
     public function manage()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
-        $certificates = Certificate::where('profile_id', $profile_id)->orderBy('created_at','desc')->get();
-        return view('admin.certificate.manage',['certificates' => $certificates]);
+        if($profile)
+        {
+            $profile_id = $profile->id;
+            $certificates = Certificate::where('profile_id', $profile_id)->orderBy('created_at','desc')->get();
+            return view('admin.certificate.manage',['certificates' => $certificates]);
+        }else
+        {
+            return view('admin.certificate.manage');
+        }
     }
 
     public function edit($id)

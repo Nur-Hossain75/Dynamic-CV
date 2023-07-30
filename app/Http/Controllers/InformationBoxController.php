@@ -19,24 +19,37 @@ class InformationBoxController extends Controller
         $this->information = new InformationBox();
 
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        $profile_id = $profile->id;
+        if($profile)
+        {
+            $profile_id = $profile->id;
 
-        $this->information->profile_id = $profile->id;
-        $this->information->name = $request->name;
-        $this->information->description = $request->description;
-        $this->information->pritory = $request->pritory;
-        $this->information->status = $request->status;
-        $this->information->save();
+            $this->information->profile_id = $profile->id;
+            $this->information->name = $request->name;
+            $this->information->description = $request->description;
+            $this->information->pritory = $request->pritory;
+            $this->information->status = $request->status;
+            $this->information->save();
 
-        return back()->with('message', 'Informtion Update Successfully.');
+            return back()->with('message', 'Informtion Update Successfully.');
+        }else
+        {
+            return back()->with('message', 'You do not create profile yet.');
+        }
+
     }
 
     public function manage()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
+       if($profile)
+       {
         $profile_id = $profile->id;
         $this->information = InformationBox::where('profile_id', $profile_id)->get();
         return view('admin.information.manage',['informations'=>$this->information ]);
+       }else
+       {
+        return view('admin.information.manage');
+       }
     }
 
     public function edit($id)
